@@ -35,7 +35,7 @@ class Runner
     master = new FlowMaster @options
     master.clickAllTriggers()
 
-  run: =>
+  run: (callback=->)=>
     master = new FlowMaster @options
     master.create (error, flow) =>
       return console.error 'error creating demo flow', error if error?
@@ -45,6 +45,8 @@ class Runner
       master.deploy flowId, (error) =>
         return console.error 'error deploying flow', error if error?
         master.clickTrigger flowId, triggerId, (error, response) =>
-          console.log error, response
+          return console.error error if error?
+          debug 'clicked trigger'
+          callback()
 
 module.exports = Runner

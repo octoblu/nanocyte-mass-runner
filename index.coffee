@@ -2,6 +2,7 @@ _      = require 'lodash'
 Runner = require './runner'
 
 runner = new Runner
-runner.clickAllTriggers()
 
-setInterval runner.clickAllTriggers, 25 * 1000
+runner.run =>
+  _.delay runner.run, 1000
+setInterval runner.clickAllTriggers, 10 * 1000
