@@ -7,7 +7,7 @@ runner = new Runner
 runAndRun = =>
   debug 'running now'
   callback = =>
-    randomNumber = Math.round(Math.random() * 1000)
+    randomNumber = Math.round(Math.random() * 100)
     debug "running again in #{randomNumber}"
     _.delay runner.run, randomNumber, callback
   runner.run callback
