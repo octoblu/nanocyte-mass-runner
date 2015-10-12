@@ -33,7 +33,7 @@ class FlowMaster
     _.find(flow.nodes, 'class': 'trigger').id
 
   clickTrigger: (flowId, triggerId, callback=->) =>
-    debug 'click trigger'
+    # debug 'click trigger'
     message = @formatTriggerMessage flowId, triggerId
     @meshbluHttp.message message, callback
 
@@ -41,6 +41,7 @@ class FlowMaster
     debug 'clicking all triggers'
     @getFlows (error, flows) =>
       debug "got #{_.size(flows)} flows"
+      debug 'clicking them all'
       _.each flows, (flow) =>
         flowId = flow.flowId
         triggerId = @findTriggerId flow

@@ -1,6 +1,6 @@
 FlowMaster    = require './flow-master'
 MeshbluConfig = require 'meshblu-config'
-debug         = require('debug')('nanocyte-mass-runner:index')
+debug         = require('debug')('nanocyte-mass-runner:runner')
 
 class Runner
   constructor: ->
@@ -44,9 +44,6 @@ class Runner
       debug 'created demo flow'
       master.deploy flowId, (error) =>
         return console.error 'error deploying flow', error if error?
-        master.clickTrigger flowId, triggerId, (error, response) =>
-          return console.error error if error?
-          debug 'clicked trigger'
-          callback()
+        callback null
 
 module.exports = Runner
