@@ -12,6 +12,6 @@ runAndRun = =>
     _.delay runner.run, randomNumber, callback
   runner.run callback
 
-_.times 5, runAndRun
+_.times 500, runAndRun
 
 setInterval runner.clickAllTriggers, 5 * 1000
